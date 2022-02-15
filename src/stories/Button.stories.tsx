@@ -19,3 +19,25 @@ Primary.args = {
   variant: 'primary',
   label: 'Button',
 };
+
+export const Danger = Template.bind({});
+
+Danger.args = {
+  variant: 'danger',
+  label: 'Button',
+};
+
+export const Text = Template.bind({});
+
+Text.args = {
+  variant: 'text',
+  label: 'Button',
+};
+
+export const Disabled = Template.bind({});
+
+Disabled.args = {
+  variant: 'primary',
+  label: 'Button',
+  disabled: true,
+}
