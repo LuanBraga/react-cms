@@ -6,6 +6,7 @@ export interface HeadingProps {
 }
 
 export default function Heading(props : HeadingProps){
+    //renderizando o componente de forma condicional
     const Component = ({
         1: Heading1,
         2: Heading2,
