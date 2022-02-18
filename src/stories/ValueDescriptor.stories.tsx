@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import ValueDescriptor from "../components/ValueDescriptor/ValueDescriptor";
 
 export default {
-    title: 'Example/ValueDescriptor',
+    title: 'Components/ValueDescriptor',
     component: ValueDescriptor,
 } as ComponentMeta<typeof ValueDescriptor>;
 

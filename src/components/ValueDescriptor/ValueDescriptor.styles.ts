@@ -1,4 +1,3 @@
-import { Default } from './../../stories/ValueDescriptor.stories';
 import styled from "styled-components";
 
 const COLORS = {
