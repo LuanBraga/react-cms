@@ -5,7 +5,7 @@ export interface HeadingProps {
     children: React.ReactNode
 }
 
-export default function Heading(props : HeadingProps){
+export default function Heading({ ...props }: HeadingProps){
     //renderizando o componente de forma condicional
     const Component = ({
         1: Heading1,

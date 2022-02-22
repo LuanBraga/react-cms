@@ -10,5 +10,9 @@ const Template: ComponentStory<typeof Confirm> = (args) => <Confirm {...args} />
 
 export const Default = Template.bind({});
 Default.args = {
-    title: 'Deseja realmente sair?' 
+    title: 'Deseja realmente sair?',
+    dangerLabel: 'Não',
+    primaryLabel: 'Sim',
+    onCancel: () => { console.log('Cancel it')},
+    onConfirm: () => { console.log('Confirm it')} 
 };

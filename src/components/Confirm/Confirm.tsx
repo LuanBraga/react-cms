@@ -3,17 +3,32 @@ import Heading from '../Typography/Heading'
 import * as C from './Confirm.styles'
 
 export interface ConfirmProps {
-    title: string,
-    label: 'Sim' | 'Não'
+    title: string
+    dangerLabel: string
+    primaryLabel: string
+    onCancel: () => any
+    onConfirm: () => any
 }
 
 export default function Confirm(props:ConfirmProps) {
     return(
         <C.Wrapper>
-            <Heading level={2}>{props.title}</Heading>
-            <span>
-                <Button variant="primary" label='Sim'></Button>
-                <Button variant="danger" label='Não'></Button>
+            <C.Title>
+                {props.title}
+            </C.Title>
+
+            <span className='Buttons'>
+                <Button 
+                    variant="danger" 
+                    label={props.dangerLabel}
+                    onClick={props.onCancel}
+                ></Button>
+                
+                <Button 
+                    variant="primary" 
+                    label={props.primaryLabel}
+                    onClick={props.onConfirm}
+                ></Button>
             </span>
         </C.Wrapper>
     )
