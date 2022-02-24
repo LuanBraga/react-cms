@@ -1,20 +1,8 @@
-// import Icon from "@mdi/react"
-// import { mdiOpenInNew } from '@mdi/js';
-
-// import {useMemo} from "react"
-import { useTable, Column, TableInstance } from "react-table"
+import { TableInstance } from "react-table"
 
 import * as T from "./Table.styles"
 
-
 export default function Table<T extends Object>({instance}: {instance: TableInstance<T>}){
-    
-
-    //UseTable recebe data e columns "memoizados"
-    //UseTable retorna um obj table instance
-    //Esse objeto contém tudo que é necessário para contruir uma tabela.
-    // const tableInstance = useTable<DataType>({data, columns})
-
     const {
         getTableProps,
         getTableBodyProps,

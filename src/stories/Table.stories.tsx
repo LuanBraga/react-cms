@@ -83,6 +83,9 @@ export function Default () {
         []
     )
 
+    //UseTable recebe data e columns "memoizados"
+    //UseTable retorna um obj table instance
+    //Esse objeto contém tudo que é necessário para contruir uma tabela.
     const tableInstance = useTable<DataType>({data, columns})
     
     return <Table<DataType> instance={tableInstance}/>
@@ -94,7 +97,6 @@ export function NoData() {
           []
         )
 
-    //Setando as definições de coluna a serem passadas para useTable()
     const columns = useMemo<Column<DataType>[]>(
         () => [
             {
