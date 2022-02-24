@@ -16,68 +16,109 @@ export default {
 // Default.args = {
 // };
 
-export type DataType = {
-    preview: React.ReactNode
-    col1: string
-    col2: string
-    actions: string
+// export type DataType = {
+//     preview: React.ReactNode
+//     col1: string
+//     col2: string
+//     actions: string
+// }
+
+// type Post = {
+//     preview: React.ReactNode
+//     col1: string
+//     col2: string
+//     actions: string
+// }
+
+type Post = {
+    id: number
+    title: string
+    views: number
+    author: {
+        name: string
+        avatar: string
+    }
+    conversions: {
+        thousands: number
+        percentage: number
+    }
 }
 
 export function Default () {
     //É importante usar o useMemo() pra garantir que nosso "data" não seja recriado e recalculado a cada renderização
-    const data = useMemo<DataType[]>(
+    const data = useMemo<Post[]>(
         () => [
             {
-              col1: 'Hello',
-              col2: 'World',
-              actions: 'action',
-              preview: <Icon 
-                        size="14px"
-                        color="#09F"
-                        path={mdiOpenInNew}/>
+              author: {
+                name: 'Daniel Bonifacio',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNf0vAZLggJoZxGKpfOa3EBClHkwQmmvv9Lg&usqp=CAU'
+              },
+              id: 1,
+              conversions: {
+                percentage: 64.35,
+                thousands: 607,
+              },
+              title: 'Como dobrei meu salário aprendendo somente React',
+              views: 985415
             },
             {
-              col1: 'react-table',
-              col2: 'rocks',
-              actions: 'action',
-              preview: <Icon 
-                        size="14px"
-                        color="#09F"
-                        path={mdiOpenInNew}/>
+              author: {
+                name: 'Daniel Bonifacio',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNf0vAZLggJoZxGKpfOa3EBClHkwQmmvv9Lg&usqp=CAU'
+              },
+              id: 2,
+              conversions: {
+                percentage: 64.35,
+                thousands: 607,
+              },
+              title: 'React.js vs. React Native: a REAL diferença entre os dois',
+              views: 985415
             },
             {
-              col1: 'whatever',
-              col2: 'you want',
-              actions: 'action',
-              preview: <Icon 
-                        size="14px"
-                        color="#09F"
-                        path={mdiOpenInNew}/>
-            },
+              author: {
+                name: 'Daniel Bonifacio',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNf0vAZLggJoZxGKpfOa3EBClHkwQmmvv9Lg&usqp=CAU'
+              },
+              id: 3,
+              conversions: {
+                percentage: 95.35,
+                thousands: 845,
+              },
+              title: 'Como dobrei meu salário aprendendo somente React',
+              views: 985415
+            }
           ],
-          []
-        )
+        []
+    )
 
     //Setando as definições de coluna a serem passadas para useTable()
-    const columns = useMemo<Column<DataType>[]>(
+    const columns = useMemo<Column<Post>[]>(
         () => [
             {
                 Header: '',
-                accessor: 'preview',
+                accessor: 'id',
+                Cell: () => <Icon path={mdiOpenInNew} size={'14px'} color={'#09F'}/>
             },
             {
-                Header: 'Column 1',
-                accessor: 'col1', //acessor é a chave do objeto em "data"
-                Cell: (row) => <div style={{textAlign: 'right'}}>{row.value}</div>
+                Header: 'Artigo',
+                accessor: 'title',
+                Cell: (props) => <div style={{display: 'flex', alignItems: 'center', gap: '8px', textAlign: 'left'}}>
+                    <img src={props.row.original.author.avatar} alt="" width={24} height={24}/>
+                    {props.value}
+                </div>
             },
             {
-                Header: 'Column 2',
-                accessor: 'col2',
-                Cell: (row) => <div style={{textAlign: 'center'}}>{row.value}</div>
+                Header: 'Views',
+                accessor: 'views',
+                Cell: (props) => <div style={{textAlign: 'right'}}>{props.value}</div>
             },
             {
-                Header: 'Actions',
-                accessor: 'actions',
+                Header: 'Conversões',
+                accessor: 'conversions',
+                Cell: (props) => <div style={{textAlign: 'right'}}>
+                    <span>{props.value.thousands}K</span>
+                    <span>{props.value.percentage}%</span>
+                </div>
             },
         ],
         []
@@ -86,42 +127,42 @@ export function Default () {
     //UseTable recebe data e columns "memoizados"
     //UseTable retorna um obj table instance
     //Esse objeto contém tudo que é necessário para contruir uma tabela.
-    const tableInstance = useTable<DataType>({data, columns})
+    const tableInstance = useTable<Post>({data, columns})
     
-    return <Table<DataType> instance={tableInstance}/>
+    return <Table<Post> instance={tableInstance}/>
 }
 
-export function NoData() {
-    const data = useMemo<DataType[]>(
-        () => [],
-          []
-        )
+// export function NoData() {
+//     const data = useMemo<Post[]>(
+//         () => [],
+//           []
+//         )
 
-    const columns = useMemo<Column<DataType>[]>(
-        () => [
-            {
-                Header: '',
-                accessor: 'preview',
-            },
-            {
-                Header: 'Column 1',
-                accessor: 'col1', //acessor é a chave do objeto em "data"
-                Cell: (row) => <div style={{textAlign: 'right'}}>{row.value}</div>
-            },
-            {
-                Header: 'Column 2',
-                accessor: 'col2',
-                Cell: (row) => <div style={{textAlign: 'center'}}>{row.value}</div>
-            },
-            {
-                Header: 'Actions',
-                accessor: 'actions',
-            },
-        ],
-        []
-    )
+//     const columns = useMemo<Column<Post>[]>(
+//         () => [
+//             {
+//                 Header: '',
+//                 accessor: 'preview',
+//             },
+//             {
+//                 Header: 'Column 1',
+//                 accessor: 'col1', //acessor é a chave do objeto em "data"
+//                 Cell: (row) => <div style={{textAlign: 'right'}}>{row.value}</div>
+//             },
+//             {
+//                 Header: 'Column 2',
+//                 accessor: 'col2',
+//                 Cell: (row) => <div style={{textAlign: 'center'}}>{row.value}</div>
+//             },
+//             {
+//                 Header: 'Actions',
+//                 accessor: 'actions',
+//             },
+//         ],
+//         []
+//     )
 
-    const tableInstance = useTable<DataType>({data, columns})
+//     const tableInstance = useTable<Post>({data, columns})
     
-    return <Table<DataType> instance={tableInstance}/>
-}
+//     return <Table<Post> instance={tableInstance}/>
+// }
