@@ -138,7 +138,7 @@ export function Default () {
     return <Table<Post> instance={tableInstance}/>
 }
 
-export function NoData() {
+export function WithoutData() {
     const data = useMemo<Post[]>(
         () => [],
           []

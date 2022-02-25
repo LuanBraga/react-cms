@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { transparentize } from "polished";
 
 export const TableWrapper = styled.table`
+    width: 100%;
     color: '#274060';
     background-color: ${transparentize(0.95, '#274060')};
 `
